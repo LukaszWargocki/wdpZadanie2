@@ -4,8 +4,8 @@
 #include<stdbool.h>
 
 void free2DArray(int** a, int m);
-int new_min_challenger(int a, int b, int c);
-int new_max_challenger(int a, int b, int c);
+int kandydat_min3(int a, int b, int c);
+int kandydat_max3(int a, int b, int c);
 int max_int(int a, int b);
 int min_int(int a, int b);
 
@@ -52,10 +52,10 @@ void free2DArray(int** a, int m) {
   free(a);
 }
 
-int new_min_challenger(int a, int b, int c) {
+int kandydat_min3(int a, int b, int c) {
   return max_int(abs(a - b), abs(b - c));
 }
-int new_max_challenger(int a, int b, int c) {
+int kandydat_max3(int a, int b, int c) {
   return min_int(abs(a - b), abs(b - c));
 }
 int max_int(int a, int b) {

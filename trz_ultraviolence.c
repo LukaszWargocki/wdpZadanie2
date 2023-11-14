@@ -4,8 +4,8 @@
 #include<stdbool.h>
 
 void free2DArray(int** a, int m);
-int new_min_challenger(int a, int b, int c);
-int new_max_challenger(int a, int b, int c);
+int kandydat_min3(int a, int b, int c);
+int kandydat_max3(int a, int b, int c);
 int max_int(int a, int b);
 int min_int(int a, int b);
 
@@ -33,8 +33,8 @@ int main() {
     for (int j = i + 1; j < rows; j++){
       for (int k = j + 1; k < rows; k++){
         if (arr[i][0] != arr[j][0] && arr[i][0] != arr[k][0] && arr[j][0] != arr[k][0] && i < j && j < k) {
-          min_odleglosc = min_int(min_odleglosc, new_min_challenger(arr[i][1], arr[j][1], arr[k][1]));
-          max_odleglosc = max_int(max_odleglosc, new_max_challenger(arr[i][1], arr[j][1], arr[k][1]));
+          min_odleglosc = min_int(min_odleglosc, kandydat_min3(arr[i][1], arr[j][1], arr[k][1]));
+          max_odleglosc = max_int(max_odleglosc, kandydat_max3(arr[i][1], arr[j][1], arr[k][1]));
         }
       }
     }
@@ -52,10 +52,10 @@ void free2DArray(int** a, int m) {
   free(a);
 }
 
-int new_min_challenger(int a, int b, int c) {
+int kandydat_min3(int a, int b, int c) {
   return max_int(abs(a - b), abs(b - c));
 }
-int new_max_challenger(int a, int b, int c) {
+int kandydat_max3(int a, int b, int c) {
   return min_int(abs(a - b), abs(b - c));
 }
 int max_int(int a, int b) {
