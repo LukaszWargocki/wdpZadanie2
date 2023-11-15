@@ -1,6 +1,9 @@
 trz.e: trz_ultraviolence.c trz.ultraviolence.h testy.c
 	gcc @opcje trz_ultraviolence.c -o trz.e
 
+brut.e: trz_ultraviolence.c trz.ultraviolence.h testy.c
+	gcc @opcje trz_ultraviolence.c -o trz.e
+
 trz.o: trz_ultraviolence.c trz_ultraviolence.h
 	gcc trz_ultraviolence.c -c
 
