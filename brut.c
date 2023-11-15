@@ -34,8 +34,8 @@ int main() {
   int max_odleglosc = -1;
   // sprawdź wszystkie możliwe kombinacje trzech punktów
   for (int i = 0; i < rows; i++) {
-    for (int j = i + 1; j < rows; j++){
-      for (int k = j + 1; k < rows; k++){
+    for (int j = i + 1; j < rows; j++) {
+      for (int k = j + 1; k < rows; k++) {
         if (arr[i][0] != arr[j][0] && arr[i][0] != arr[k][0] && arr[j][0] != arr[k][0] && i < j && j < k) {
           min_odleglosc = min_int(min_odleglosc, kandydat_min3(arr[i][1], arr[j][1], arr[k][1]));
           max_odleglosc = max_int(max_odleglosc, kandydat_max3(arr[i][1], arr[j][1], arr[k][1]));
