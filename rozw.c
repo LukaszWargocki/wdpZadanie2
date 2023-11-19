@@ -28,27 +28,25 @@ int main() {
 
   // populuj pierwszą kolumnę tablicy identyfikatorami sieci, drugą kolumnę kilometrażami z wejścia
   for (int i = 0; i < liczbaHoteli; i++) {
-    scanf("%d %d", &arr[i][0], &arr[i][1]);
+    scanf("%d %d", &hotele[i][0], &hotele[i][1]);
   }
 
   // wstaw indeksy spoza tablicy najbliższej wcześniejszą sieci dla pierwszego hotelu i najbliższej dalszej dla ostatniego
   hotele[0][2] = -1;
-  hotele[wiersze - 1][3] = wiersze;
+  hotele[liczbaHoteli - 1][3] = liczbaHoteli;
 
   // populuj trzecią kolumnę tablicy - nabliższe wcześniejsze hotele innej sieci
   // zaczynamy od drugiego i porównujemy z bliższym poprzednikiem
-  for (int i = 1; i < n; i++) {
+  for (int i = 1; i < liczbaHoteli; i++) {
       // porównaj sieć obecnego z poprzednim; inne? wpisz indeks poprzedniego te same? wpisz wartość poprzedniego
       hotele[i][2] = (hotele[i][0] != hotele[i - 1][0]) ? i - 1 : hotele[i - 1][2];
   }
 
   // populuj czwartą kolumnę tablicy - najbliższe dalsze hotele innej sieci
-  for (int i = n - 2; i >= 0; i--) {
+  for (int i = liczbaHoteli - 2; i >= 0; i--) {
     // podobnie jak wyżej, zaczynij od przedostatniego i porównuj z dalszym poprzednikiem
     hotele[i][3] = (hotele[i][0] != hotele[i + 1][0]) ? i + 1 : hotele[i + 1][3];
   }
-
-
 
   // weryfikacja danych z przykładu - WYWAL
   for (int i = 0; i < liczbaHoteli; i++) {
@@ -58,21 +56,19 @@ int main() {
     printf("%d\n", hotele[i][3]);
   }
 
-
-
   // zainicjalizuj zmienne wynikowe z wartościami zawsze zastępowanymi przez funkcje ewaluujące kandydatów
   int najblizsze3 = INT_MAX;
   int najdalsze3 = -INT_MAX;
 
   // szukaj najbliższej trójki hoteli innych sieci, hotel o bieżącym indeksie jest hotelem B w max(B - A, C - B)
-  for (int i = 1; i < wiersze - 1; i++) {
+  for (int i = 1; i < liczbaHoteli - 1; i++) {
     // odczytaj indeksy najbliższych sąsiednich hoteli innych sieci - A, B
     int indeksA = hotele[2][i];
     int indeksC = hotele[3][i];
     // nie wykonuj dla indeksów spoza tablicy - wszystkie poprzednie/wszystke dalsze są tej samej sieci co bieżący
-    if (indeksA >= 0 && indeksC < n) {
-      siecA = hotele[indeksA][0];
-      siecC = hotele[indeksC][0];
+    if (indeksA >= 0 && indeksC < liczbaHoteli) {
+      int siecA = hotele[indeksA][0];
+      int siecC = hotele[indeksC][0];
       // nie wykonuj jeżeli najbliższy poprzedni jest tej samej sieci co najbliższy dalszy
       if (siecA != siecC) {
         // odczytaj odległości od początku, oblicz większy odcinek i zaktualizuj wynik
