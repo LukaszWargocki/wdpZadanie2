@@ -4,8 +4,6 @@
 #include<stdbool.h>
 
 void free2DArray(int** a, int m);
-int kandydat_min3(int a, int b, int c);
-int kandydat_max3(int a, int b, int c);
 int max_int(int a, int b);
 int min_int(int a, int b);
 
@@ -22,6 +20,7 @@ int main() {
     w trzeciej indeks najbliższego hotelu innej sieci o niższym indeksie/kilometrażu (hotel A)
     w czwartej indeks najbliższego hotelu innej sieci o wyższym indeksie/kilometrażu (hotel C)
   */
+
   int **hotele = malloc((size_t) liczbaHoteli * sizeof(int*));
   for (int i = 0; i < liczbaHoteli; i++) {
     hotele[i] = malloc((size_t) kolumny * sizeof(int));
@@ -80,7 +79,7 @@ int main() {
         int kilometrA = hotele[indeksA][1];
         int kilometrC = hotele[indeksC][1];
         int kilometrB = hotele[i][1];
-        najblizsze3 = min_int(najblizsze3, max_int(kilometrB - kilometrA, kilometrC - kilometrB));
+        najblizsze3 = minInt(najblizsze3, maxInt(kilometrB - kilometrA, kilometrC - kilometrB));
       }
     }
   }
@@ -107,11 +106,11 @@ void free2DArray(int** a, int wiersze) {
 }
 
 // pomocnicza funkcja -> fmax dla integerów
-int max_int(int a, int b) {
+int maxInt(int a, int b) {
   return a > b ? a : b;
 }
 
 // pomocnicza funkcja -> fmin dla integerów
-int min_int(int a, int b) {
+int minInt(int a, int b) {
   return a < b ? a : b;
 }
