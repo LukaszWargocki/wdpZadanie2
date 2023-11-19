@@ -35,16 +35,17 @@ int main() {
   int indeksSieci2 = 1;
 
   // inkrementuj aż znajdzie inną sieć lub dojdzie do końca
-  while (hotele[indeksSieci1][0] == hotele[indeksSieci2][0] && indeksSieci2 < liczbaHoteli)
+  while (hotele[indeksSieci1][0] == hotele[indeksSieci2][0] && indeksSieci2 < liczbaHoteli - 1) {
     indeksSieci2++;
+  }
+
   int indeksSieci3 = indeksSieci2 + 1;
-  while ((hotele[indeksSieci3][0] == hotele[indeksSieci2][0] || hotele[indeksSieci3][0] == hotele[indeksSieci1][0])
-          && indeksSieci3 < liczbaHoteli)
+  while (indeksSieci3 < liczbaHoteli && (hotele[indeksSieci3][0] == hotele[indeksSieci2][0] || hotele[indeksSieci3][0] == hotele[indeksSieci1][0])) {
     indeksSieci3++;
-  
+  }  
   // jeżeli nie znaleziono trzeciej sieci wyświetl "0 0" i zakończ
   if (indeksSieci3 >= liczbaHoteli) {
-    printf("0 0");
+    printf("0 0\n");
     return 0;
   }
 
@@ -145,7 +146,7 @@ int main() {
   free2DArray(hotele, liczbaHoteli);
 
   // wypisz wynik
-  printf("%d %d", najblizsze3, najdalsze3);
+  printf("%d %d\n", najblizsze3, najdalsze3);
 
   return 0;
 }

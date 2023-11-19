@@ -29,15 +29,16 @@ int main() {
   int indeksB = 1;
 
   // inkrementuj aż znajdzie inną sieć lub dojdzie do końca
-  while (arr[indeksA][0] == arr[indeksB][0] && indeksB < rows)
+  while (arr[indeksA][0] == arr[indeksB][0] && indeksB < rows - 1) {
     indeksB++;
+  }
   int indeksC = indeksB + 1;
-  while ((arr[indeksC][0] == arr[indeksB][0] || arr[indeksC][0] == arr[indeksA][0]) && indeksC < rows)
+  while (indeksC < rows && (arr[indeksC][0] == arr[indeksB][0] || arr[indeksC][0] == arr[indeksA][0])) {
     indeksC++;
-  
+  }
   // jeżeli nie znaleziono trzeciej sieci w tablicy wyświetl "0 0" i zakończ
   if (indeksC >= rows) {
-    printf("0 0");
+    printf("0 0\n");
     return 0;
   }
 
@@ -59,7 +60,7 @@ int main() {
   // zwolnij pamięć
   free2DArray(arr, rows);
   // zestaw znany wynik dla domyślnego inputu z uzyskanym
-  printf("%d %d", min_odleglosc, max_odleglosc);
+  printf("%d %d\n", min_odleglosc, max_odleglosc);
   return 0;
 }
 
