@@ -32,7 +32,7 @@ int main() {
   while (arr[indeksA][0] == arr[indeksB][0] && indeksB < rows)
     indeksB++;
   int indeksC = indeksB + 1;
-  while ((arr[indeksC][0] == arr[indeksB][0] || arr[indeksC][0] == arr[indeksA]) && indeksC < rows)
+  while ((arr[indeksC][0] == arr[indeksB][0] || arr[indeksC][0] == arr[indeksA][0]) && indeksC < rows)
     indeksC++;
   
   // jeżeli nie znaleziono trzeciej sieci w tablicy wyświetl "0 0" i zakończ

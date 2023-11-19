@@ -38,7 +38,7 @@ int main() {
   while (hotele[indeksSieci1][0] == hotele[indeksSieci2][0] && indeksSieci2 < liczbaHoteli)
     indeksSieci2++;
   int indeksSieci3 = indeksSieci2 + 1;
-  while ((hotele[indeksSieci3][0] == hotele[indeksSieci2][0] || hotele[indeksSieci3][0] == hotele[indeksSieci1])
+  while ((hotele[indeksSieci3][0] == hotele[indeksSieci2][0] || hotele[indeksSieci3][0] == hotele[indeksSieci1][0])
           && indeksSieci3 < liczbaHoteli)
     indeksSieci3++;
   
