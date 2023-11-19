@@ -19,10 +19,28 @@ int main() {
   for (int i = 0; i < rows; i++) {
     arr[i] = malloc((long long unsigned int) cols * sizeof(int));
   }
-  // wypełnij tablicę inpute,
+  // wypełnij tablicę inputem
   for (int i = 0; i < rows; i++) {
     scanf("%d %d", &arr[i][0], &arr[i][1]);
   };
+  
+  // sprawdzenie czy istnieją trzy rózne sieci
+  int indeksA = 0;
+  int indeksB = 1;
+
+  // inkrementuj aż znajdzie inną sieć lub dojdzie do końca
+  while (arr[indeksA][0] == arr[indeksB][0] && indeksB < rows)
+    indeksB++;
+  int indeksC = indeksB + 1;
+  while ((arr[indeksC][0] == arr[indeksB][0] || arr[indeksC][0] == arr[indeksA]) && indeksC < rows)
+    indeksC++;
+  
+  // jeżeli nie znaleziono trzeciej sieci w tablicy wyświetl "0 0" i zakończ
+  if (indeksC >= rows) {
+    printf("0 0");
+    return 0;
+  }
+
   // zainicjalizuj zmienne do przechowywania wyników najgorszymi wartościami
   int min_odleglosc = INT_MAX;
   int max_odleglosc = -1;
@@ -41,7 +59,7 @@ int main() {
   // zwolnij pamięć
   free2DArray(arr, rows);
   // zestaw znany wynik dla domyślnego inputu z uzyskanym
-  printf("\n7 = %d\n10 = %d\n", min_odleglosc, max_odleglosc);
+  printf("%d %d", min_odleglosc, max_odleglosc);
   return 0;
 }
 

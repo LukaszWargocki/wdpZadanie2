@@ -30,6 +30,24 @@ int main() {
     scanf("%d %d", &hotele[i][0], &hotele[i][1]);
   }
 
+  // sprawdzenie czy istnieją trzy rózne sieci
+  int indeksSieci1 = 0;
+  int indeksSieci2 = 1;
+
+  // inkrementuj aż znajdzie inną sieć lub dojdzie do końca
+  while (hotele[indeksSieci1][0] == hotele[indeksSieci2][0] && indeksSieci2 < liczbaHoteli)
+    indeksSieci2++;
+  int indeksSieci3 = indeksSieci2 + 1;
+  while ((hotele[indeksSieci3][0] == hotele[indeksSieci2][0] || hotele[indeksSieci3][0] == hotele[indeksSieci1])
+          && indeksSieci3 < liczbaHoteli)
+    indeksSieci3++;
+  
+  // jeżeli nie znaleziono trzeciej sieci wyświetl "0 0" i zakończ
+  if (indeksSieci3 >= liczbaHoteli) {
+    printf("0 0");
+    return 0;
+  }
+
   // wstaw indeksy spoza tablicy najbliższej wcześniejszej sieci dla pierwszego hotelu i najbliższej dalszej dla ostatniego
   hotele[0][2] = -1;
   hotele[liczbaHoteli - 1][3] = liczbaHoteli;
