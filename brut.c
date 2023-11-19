@@ -24,11 +24,11 @@ int main() {
   for (int i = 0; i < rows; i++) {
     scanf("%d %d", &arr[i][0], &arr[i][1]);
   };
-  // wyświetl input
-    for (int i = 0; i < rows; i++) {
-    printf("%d ", arr[i][0]);
-    printf("%d\n", arr[i][1]);
-  };
+  // wyświetl input WYWAL
+  //   for (int i = 0; i < rows; i++) {
+  //   printf("%d ", arr[i][0]);
+  //   printf("%d\n", arr[i][1]);
+  // };
   // zainicjalizuj zmienne do przechowywania wyników najgorszymi wartościami
   int min_odleglosc = INT_MAX;
   int max_odleglosc = -1;
