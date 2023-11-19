@@ -1,9 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<limits.h>
-#include<stdbool.h>
 
-void free2DArray(int** a, int m);
+void free2DArray(int** a, int wiersze);
 int maxInt(int a, int b);
 int minInt(int a, int b);
 

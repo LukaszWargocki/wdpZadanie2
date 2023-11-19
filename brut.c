@@ -1,7 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<limits.h>
-#include<stdbool.h>
 
 // deklaracja funkcji pomocniczych
 void free2DArray(int** a, int m);
@@ -24,11 +23,6 @@ int main() {
   for (int i = 0; i < rows; i++) {
     scanf("%d %d", &arr[i][0], &arr[i][1]);
   };
-  // wyświetl input WYWAL
-  //   for (int i = 0; i < rows; i++) {
-  //   printf("%d ", arr[i][0]);
-  //   printf("%d\n", arr[i][1]);
-  // };
   // zainicjalizuj zmienne do przechowywania wyników najgorszymi wartościami
   int min_odleglosc = INT_MAX;
   int max_odleglosc = -1;
@@ -43,6 +37,7 @@ int main() {
       }
     }
   }
+
   // zwolnij pamięć
   free2DArray(arr, rows);
   // zestaw znany wynik dla domyślnego inputu z uzyskanym
