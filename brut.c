@@ -72,12 +72,12 @@ void free2DArray(int** a, int m) {
   free(a);
 }
 
-// przyjmuje trzy integery reprezentujące odległości punktów od początku i zwaraca dłuższy z odcinków pomiędzy nimi; kolejność argumentów ma znaczenie
+/* przyjmuje trzy integery reprezentujące odległości punktów od początku i zwaraca dłuższy z odcinków pomiędzy nimi; kolejność argumentów ma znaczenie */
 int kandydat_min3(int a, int b, int c) {
   return max_int(abs(a - b), abs(b - c));
 }
 
-// przyjmuje trzy integery reprezentujące odległości punktów od początku i zwaraca krótszy z odcinków pomiędzy nimi; kolejność argumentów ma znaczenie
+/* przyjmuje trzy integery reprezentujące odległości punktów od początku i zwaraca krótszy z odcinków pomiędzy nimi; kolejność argumentów ma znaczenie */
 int kandydat_max3(int a, int b, int c) {
   return min_int(abs(a - b), abs(b - c));
 }

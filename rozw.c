@@ -17,15 +17,14 @@ int main() {
     w pierwszej kolumnie będzie przechowywać identyfikator sieci
     w drugiej - odległość od początku trasy - kilometraż
     w trzeciej indeks najbliższego hotelu innej sieci o niższym indeksie/kilometrażu (wcześniejszym)
-    w czwartej indeks najbliższego hotelu innej sieci o wyższym indeksie/kilometrażu (dalszym)
-  */
+    w czwartej indeks najbliższego hotelu innej sieci o wyższym indeksie/kilometrażu (dalszym) */
 
   int **hotele = malloc((size_t) liczbaHoteli * sizeof(int*));
   for (int i = 0; i < liczbaHoteli; i++) {
     hotele[i] = malloc((size_t) kolumny * sizeof(int));
   }
 
-  // populuj pierwszą kolumnę tablicy identyfikatorami sieci, drugą kolumnę kilometrażami z wejścia
+  /* populuj pierwszą kolumnę tablicy identyfikatorami sieci, drugą kolumnę kilometrażami z wejścia */
   for (int i = 0; i < liczbaHoteli; i++) {
     scanf("%d %d", &hotele[i][0], &hotele[i][1]);
   }
@@ -49,14 +48,14 @@ int main() {
     return 0;
   }
 
-  // wstaw indeksy spoza tablicy najbliższej wcześniejszej sieci dla pierwszego hotelu i najbliższej dalszej dla ostatniego
+  /* wstaw indeksy spoza tablicy najbliższej wcześniejszej sieci dla pierwszego hotelu i najbliższej dalszej dla ostatniego */
   hotele[0][2] = -1;
   hotele[liczbaHoteli - 1][3] = liczbaHoteli;
 
-  // populuj trzecią kolumnę tablicy - nabliższe wcześniejsze hotele innej sieci
-  // zaczynamy od drugiego i porównujemy z bliższym poprzednikiem
+  /* populuj trzecią kolumnę tablicy - nabliższe wcześniejsze hotele innej sieci
+  zaczynamy od drugiego i porównujemy z bliższym poprzednikiem */
   for (int i = 1; i < liczbaHoteli; i++) {
-      // porównaj sieć obecnego z poprzednim; inne? wpisz indeks poprzedniego te same? wpisz wartość poprzedniego
+      /* porównaj sieć obecnego z poprzednim; inne? wpisz indeks poprzedniego te same? wpisz wartość poprzedniego */
       hotele[i][2] = (hotele[i][0] != hotele[i - 1][0]) ? i - 1 : hotele[i - 1][2];
   }
 
@@ -100,25 +99,25 @@ int main() {
   // zainicjalizuj trzeciego kandydata jako drugiego kandydata
   int indeksA3 = indeksA2;
 
-  // szukaj trzeciego kandydata wzdłuż drogi aż znajdziesz hotel innej sieci niż poprzedni kandydaci (albo dojdziesz do końca)
+  /* szukaj trzeciego kandydata wzdłuż drogi aż znajdziesz hotel innej sieci niż poprzedni kandydaci (albo dojdziesz do końca) */
   while ((hotele[indeksA3][0] == siecA1 || hotele[indeksA3][0] == siecA2) && indeksA3 < liczbaHoteli - 1)
     indeksA3++;
   // zainicjalizuj pierwszego kandydata na hotel C jako ostatni hotel
   int indeksC1 = liczbaHoteli - 1;
   int siecC1 = hotele[indeksC1][0];
-  // jeżeli pierwszy kandydat nie ma hotelu innej sieci na lewo zainicjalizuj drugiego kandydata jako ten sam hotel
-  // jeżeli ma, zainicjalizuj drugiego kandydata jako pierwszy hotel innej sieci na lewo
+  /* jeżeli pierwszy kandydat nie ma hotelu innej sieci na lewo zainicjalizuj drugiego kandydata jako ten sam hotel
+  jeżeli ma, zainicjalizuj drugiego kandydata jako pierwszy hotel innej sieci na lewo */
   int indeksC2 = hotele[indeksC1][2] == - 1 ? indeksC1 : hotele[indeksC1][2];
   int siecC2 = hotele[indeksC2][0];
-  // szukaj trzeciego kandydata na lewo, aż nie dojdziesz do początku tablicy 
-  // lub nie znajdziesz hotelu innej sieci niż poprzedni kandydaci
+  /* szukaj trzeciego kandydata na lewo, aż nie dojdziesz do początku tablicy 
+  lub nie znajdziesz hotelu innej sieci niż poprzedni kandydaci */
   int indeksC3 = indeksC2;
   while ((hotele[indeksC3][0] == siecC1 || hotele[indeksC3][0] == siecC2) && indeksC3 > 0)
     indeksC3++;
   // zapisz kandydatów w iterowalnej postaci
   int kandydaciA[3] = {indeksA1, indeksA2, indeksA3};
   int kandydaciC[3] = {indeksC1, indeksC2, indeksC3};
-  // dla każdej pary skrajnych hoteli A i C z innych sieci, sprawdź każdy hotel B z innej sieci
+  /* dla każdej pary skrajnych hoteli A i C z innych sieci, sprawdź każdy hotel B z innej sieci */
   // przeiteruj kandydatów A
   for (int i = 0; i < 3; i++) {
     int indeksA = kandydaciA[i];
@@ -129,7 +128,7 @@ int main() {
       int siecC = hotele[indeksC][0];
       // jeżeli hotel A jest innej sieci niż hotel C
       if (indeksA < indeksC && siecA != siecC) {
-        // sprawdź wszystkie hotele pomiędzy hotelem A i C - bieżący indeks pętli to kandydat B
+        /* sprawdź wszystkie hotele pomiędzy hotelem A i C - bieżący indeks pętli to kandydat B */
         for (int k = indeksA + 1; k < indeksC; k++) {
           int siecB = hotele[k][0];
           // jeżeli kandydat B jest innej sieci niż kandydat A i C
@@ -151,7 +150,7 @@ int main() {
   return 0;
 }
 
-// pomocnicza funkcja zwalniająca pamięć dwuwymiarowej tablicy integerów o zadanej liczbie wierszy
+/* pomocnicza funkcja zwalniająca pamięć dwuwymiarowej tablicy integerów o zadanej liczbie wierszy */
 void free2DArray(int** a, int wiersze) {
   for (int i = 0; i < wiersze; i++) {
     free(a[i]);
