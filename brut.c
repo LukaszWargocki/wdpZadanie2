@@ -29,7 +29,7 @@ int main() {
   int indeksB = 1;
 
   // inkrementuj aż znajdzie inną sieć lub dojdzie do końca
-  while (arr[indeksA][0] == arr[indeksB][0] && indeksB < rows - 1) {
+  while (indeksB < rows - 1 && arr[indeksA][0] == arr[indeksB][0]) {
     indeksB++;
   }
   int indeksC = indeksB + 1;

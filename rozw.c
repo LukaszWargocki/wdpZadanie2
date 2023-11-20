@@ -35,7 +35,7 @@ int main() {
   int indeksSieci2 = 1;
 
   // inkrementuj aż znajdzie inną sieć lub dojdzie do końca
-  while (hotele[indeksSieci1][0] == hotele[indeksSieci2][0] && indeksSieci2 < liczbaHoteli - 1) {
+  while (indeksSieci2 < liczbaHoteli - 1 && hotele[indeksSieci1][0] == hotele[indeksSieci2][0]) {
     indeksSieci2++;
   }
 
